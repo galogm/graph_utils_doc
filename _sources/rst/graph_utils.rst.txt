@@ -1,32 +1,32 @@
-setting
+Setting
 ======================
 .. automodule:: graph_utils.setting
    :members:
    :show-inheritance:
    :no-undoc-members:
 
-plt
+Plt
 ======================
 .. automodule:: graph_utils.plt
    :members:
    :show-inheritance:
    :no-undoc-members:
 
-file
+File
 ======================
 .. automodule:: graph_utils.file
    :members:
    :show-inheritance:
    :no-undoc-members:
 
-save_load
+Save_load
 ======================
 .. automodule:: graph_utils.save_load
    :members:
    :show-inheritance:
    :no-undoc-members:
 
-evaluation
+Evaluation
 ======================
 .. automodule:: graph_utils.evaluation
    :members:
@@ -34,7 +34,7 @@ evaluation
    :exclude-members:
    :no-undoc-members:
 
-common
+Common
 ======================
 .. automodule:: graph_utils.common
    :members:
@@ -42,7 +42,7 @@ common
    :exclude-members:
    :no-undoc-members:
 
-bot
+Bot
 ======================
 .. automodule:: graph_utils.bot
    :members:
