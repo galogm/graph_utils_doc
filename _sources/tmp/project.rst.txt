@@ -1,7 +1,7 @@
-graph_utils
-===========
+the_utils
+=========
 
 .. toctree::
    :maxdepth: 4
 
-   graph_utils
+   the_utils

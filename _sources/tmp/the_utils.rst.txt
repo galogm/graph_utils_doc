@@ -1,67 +1,67 @@
-graph\_utils package
-====================
+the\_utils package
+==================
 
 Submodules
 ----------
 
-graph\_utils.bot module
------------------------
+the\_utils.bot module
+---------------------
 
 .. automodule:: the_utils.bot
    :members:
    :undoc-members:
    :show-inheritance:
 
-graph\_utils.common module
---------------------------
+the\_utils.common module
+------------------------
 
 .. automodule:: the_utils.common
    :members:
    :undoc-members:
    :show-inheritance:
 
-graph\_utils.eval\_tools module
--------------------------------
+the\_utils.eval\_tools module
+-----------------------------
 
 .. automodule:: the_utils.eval_tools
    :members:
    :undoc-members:
    :show-inheritance:
 
-graph\_utils.evaluation module
-------------------------------
+the\_utils.evaluation module
+----------------------------
 
 .. automodule:: the_utils.evaluation
    :members:
    :undoc-members:
    :show-inheritance:
 
-graph\_utils.file module
-------------------------
+the\_utils.file module
+----------------------
 
 .. automodule:: the_utils.file
    :members:
    :undoc-members:
    :show-inheritance:
 
-graph\_utils.plt module
------------------------
+the\_utils.plt module
+---------------------
 
 .. automodule:: the_utils.plt
    :members:
    :undoc-members:
    :show-inheritance:
 
-graph\_utils.save\_load module
-------------------------------
+the\_utils.save\_load module
+----------------------------
 
 .. automodule:: the_utils.save_load
    :members:
    :undoc-members:
    :show-inheritance:
 
-graph\_utils.setting module
----------------------------
+the\_utils.setting module
+-------------------------
 
 .. automodule:: the_utils.setting
    :members:

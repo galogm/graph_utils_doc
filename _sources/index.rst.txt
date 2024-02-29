@@ -11,7 +11,7 @@ Welcome to Graph Utils' documentation!
    :caption: Utils
    :glob:
 
-   rst/graph_utils.rst
+   rst/the_utils.rst
 
 
 Index
