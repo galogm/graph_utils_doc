@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>graph_utils.setting &mdash; graph utils 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/table.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=f6245a2f"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            graph utils
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../rst/graph_utils.html">setting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rst/graph_utils.html#module-graph_utils.plt">plt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rst/graph_utils.html#module-graph_utils.file">file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rst/graph_utils.html#module-graph_utils.save_load">save_load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rst/graph_utils.html#module-graph_utils.evaluation">evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rst/graph_utils.html#module-graph_utils.common">common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rst/graph_utils.html#module-graph_utils.bot">bot</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">graph utils</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">graph_utils.setting</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for graph_utils.setting</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Utils for Settings.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="set_seed"><a class="viewcode-back" href="../../tmp/graph_utils.html#graph_utils.setting.set_seed">[docs]</a><span class="k">def</span> <span class="nf">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4096</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set random seed.</span>
+
+<span class="sd">    NOTE:</span>
+<span class="sd">        !!! `conv` and `neighborSampler` of dgl are somehow nondeterministic !!!</span>
+
+<span class="sd">        Set seeds according to:</span>
+<span class="sd">            - `pytorch doc &lt;https://pytorch.org/docs/1.9.0/notes/randomness.html&gt;`_</span>
+<span class="sd">            - `cudatoolkit doc \</span>
+<span class="sd">                &lt;https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility&gt;`_</span>
+<span class="sd">            - `dgl issue &lt;https://github.com/dmlc/dgl/issues/3302&gt;`_</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        seed (int, optional): random seed. Defaults to 4096.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYTHONHASHSEED&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="c1"># required by torch: Deterministic behavior was enabled with either</span>
+        <span class="c1"># `torch.use_deterministic_algorithms(True)` or</span>
+        <span class="c1"># `at::Context::setDeterministicAlgorithms(true)`,</span>
+        <span class="c1"># but this operation is not deterministic because it uses CuBLAS and you have</span>
+        <span class="c1"># CUDA &gt;= 10.2. To enable deterministic behavior in this case,</span>
+        <span class="c1"># you must set an environment variable before running your PyTorch application:</span>
+        <span class="c1"># CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8.</span>
+        <span class="c1"># For more information, go to</span>
+        <span class="c1"># https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CUBLAS_WORKSPACE_CONFIG&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;:4096:8&quot;</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="c1"># if you are using multi-GPU.</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">deterministic</span> <span class="o">=</span> <span class="kc">True</span></div>
+        <span class="c1"># torch.use_deterministic_algorithms(True)</span>
+        <span class="c1"># NOTE: dgl.seed will occupy cuda:0 no matter which gpu is set if seed is set before device</span>
+        <span class="c1"># see the issue：https://github.com/dmlc/dgl/issues/3054</span>
+        <span class="c1"># dgl.seed(seed)</span>
+
+
+<div class="viewcode-block" id="set_device"><a class="viewcode-back" href="../../tmp/graph_utils.html#graph_utils.setting.set_device">[docs]</a><span class="k">def</span> <span class="nf">set_device</span><span class="p">(</span><span class="n">gpu</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set torch device.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        gpu (str): args.gpu. Defaults to &#39;0&#39;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        torch.device: torch device. `device(type=&#39;cuda: x&#39;)` or `device(type=&#39;cpu&#39;)`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">max_device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">device_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">gpu</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Use CPU.&quot;</span><span class="p">)</span>
+        <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">gpu</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;args.gpu:</span><span class="si">{</span><span class="n">gpu</span><span class="si">}</span><span class="s2"> is not a single number for gpu setting.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Multiple GPUs parallelism is not supported.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">gpu</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_device</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GPU available. Use cuda:</span><span class="si">{</span><span class="n">gpu</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cuda:</span><span class="si">{</span><span class="n">gpu</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">set_device</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cuda:</span><span class="si">{</span><span class="n">gpu</span><span class="si">}</span><span class="s2"> is not in available devices [0, </span><span class="si">{</span><span class="n">max_device</span><span class="si">}</span><span class="s2">]. Use CPU instead.&quot;</span><span class="p">)</span>
+            <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GPU is not available. Use CPU instead.&quot;</span><span class="p">)</span>
+        <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">device</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, galo.gm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

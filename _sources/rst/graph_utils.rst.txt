@@ -1,0 +1,51 @@
+setting
+======================
+.. automodule:: graph_utils.setting
+   :members:
+   :show-inheritance:
+   :no-undoc-members:
+
+plt
+======================
+.. automodule:: graph_utils.plt
+   :members:
+   :show-inheritance:
+   :no-undoc-members:
+
+file
+======================
+.. automodule:: graph_utils.file
+   :members:
+   :show-inheritance:
+   :no-undoc-members:
+
+save_load
+======================
+.. automodule:: graph_utils.save_load
+   :members:
+   :show-inheritance:
+   :no-undoc-members:
+
+evaluation
+======================
+.. automodule:: graph_utils.evaluation
+   :members:
+   :show-inheritance:
+   :exclude-members:
+   :no-undoc-members:
+
+common
+======================
+.. automodule:: graph_utils.common
+   :members:
+   :show-inheritance:
+   :exclude-members:
+   :no-undoc-members:
+
+bot
+======================
+.. automodule:: graph_utils.bot
+   :members:
+   :show-inheritance:
+   :exclude-members:
+   :no-undoc-members:
