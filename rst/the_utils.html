@@ -71,7 +71,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#the_utils.save_load.load_model"><code class="docutils literal notranslate"><span class="pre">load_model()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#module-the_utils.evaluation">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-the_utils.evaluation.unsupervised_graph_learning">Evaluation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the_utils.evaluation.unsupervised_graph_learning.cluster_eval"><code class="docutils literal notranslate"><span class="pre">cluster_eval()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the_utils.evaluation.unsupervised_graph_learning.evaluate_clf_cls"><code class="docutils literal notranslate"><span class="pre">evaluate_clf_cls()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the_utils.evaluation.unsupervised_graph_learning.evaluate_from_embeddings"><code class="docutils literal notranslate"><span class="pre">evaluate_from_embeddings()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="#module-the_utils.common">Common</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the_utils.common.get_str_time"><code class="docutils literal notranslate"><span class="pre">get_str_time()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the_utils.common.format_value"><code class="docutils literal notranslate"><span class="pre">format_value()</span></code></a></li>
@@ -352,9 +357,65 @@
 </dd></dl>
 
 </section>
-<section id="module-the_utils.evaluation">
-<span id="evaluation"></span><h1>Evaluation<a class="headerlink" href="#module-the_utils.evaluation" title="Permalink to this heading"></a></h1>
-<p>Evaluation Utils</p>
+<section id="module-the_utils.evaluation.unsupervised_graph_learning">
+<span id="evaluation"></span><h1>Evaluation<a class="headerlink" href="#module-the_utils.evaluation.unsupervised_graph_learning" title="Permalink to this heading"></a></h1>
+<p>Evaluation utils for unsupervised graph learning tasks.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="the_utils.evaluation.unsupervised_graph_learning.cluster_eval">
+<span class="sig-prename descclassname"><span class="pre">the_utils.evaluation.unsupervised_graph_learning.</span></span><span class="sig-name descname"><span class="pre">cluster_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/evaluation/unsupervised_graph_learning.html#cluster_eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.evaluation.unsupervised_graph_learning.cluster_eval" title="Permalink to this definition"></a></dt>
+<dd><p>code source: <a class="reference external" href="https://github.com/bdy9527/SDCN">https://github.com/bdy9527/SDCN</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="the_utils.evaluation.unsupervised_graph_learning.evaluate_clf_cls">
+<span class="sig-prename descclassname"><span class="pre">the_utils.evaluation.unsupervised_graph_learning.</span></span><span class="sig-name descname"><span class="pre">evaluate_clf_cls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'both'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/evaluation/unsupervised_graph_learning.html#evaluate_clf_cls"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.evaluation.unsupervised_graph_learning.evaluate_clf_cls" title="Permalink to this definition"></a></dt>
+<dd><p>Evaluation of node classification (linear regression) and clustering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>np.ndarray</em>) – Labels.</p></li>
+<li><p><strong>num_classes</strong> (<em>int</em>) – Num of classes.</p></li>
+<li><p><strong>num_nodes</strong> (<em>int</em>) – Num of nodes.</p></li>
+<li><p><strong>data_name</strong> (<em>str</em>) – Dataset name.</p></li>
+<li><p><strong>embeddings</strong> (<em>torch.Tensor</em>) – Node embedding matrix.</p></li>
+<li><p><strong>quiet</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print info. Defaults to True.</p></li>
+<li><p><strong>method</strong> (<em>bool</em><em>, </em><em>optional</em>) – method for evaluation,             “clf” for linear regression (node classification),                 “cls” for node clustering, “both” for both. Defaults to “both”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>_description_</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>_type_</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="the_utils.evaluation.unsupervised_graph_learning.evaluate_from_embeddings">
+<span class="sig-prename descclassname"><span class="pre">the_utils.evaluation.unsupervised_graph_learning.</span></span><span class="sig-name descname"><span class="pre">evaluate_from_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'both'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/the_utils/evaluation/unsupervised_graph_learning.html#evaluate_from_embeddings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.evaluation.unsupervised_graph_learning.evaluate_from_embeddings" title="Permalink to this definition"></a></dt>
+<dd><p>evaluate embeddings with LR and Clustering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labels</strong> (<em>np.ndarray</em>) – labels.</p></li>
+<li><p><strong>num_classes</strong> (<em>int</em>) – number of classes.</p></li>
+<li><p><strong>num_nodes</strong> (<em>int</em>) – number of nodes.</p></li>
+<li><p><strong>data_name</strong> (<em>str</em>) – name of the datasets.</p></li>
+<li><p><strong>embeddings</strong> (<em>torch.Tensor</em>) – embeddings.</p></li>
+<li><p><strong>quiet</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to print info. Defaults to True.</p></li>
+<li><p><strong>method</strong> (<em>bool</em><em>, </em><em>optional</em>) – method for evaluation,             “clf” for linear regression (node classification),                 “cls” for node clustering, “both” for both. Defaults to “both”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(clustering_results, classification_results)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[Dict, Dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-the_utils.common">
 <span id="common"></span><h1>Common<a class="headerlink" href="#module-the_utils.common" title="Permalink to this heading"></a></h1>

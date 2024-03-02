@@ -28,7 +28,7 @@ Save_load
 
 Evaluation
 ======================
-.. automodule:: the_utils.evaluation
+.. automodule:: the_utils.evaluation.unsupervised_graph_learning
    :members:
    :show-inheritance:
    :exclude-members:
