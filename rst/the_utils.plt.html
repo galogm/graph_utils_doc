@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plt &mdash; the_utils 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/table.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=2389946f"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File" href="the_utils.file.html" />
+    <link rel="prev" title="Setting" href="the_utils.setting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            the_utils
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Setting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="the_utils.setting.html">Setting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Plt</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Plt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the_utils.plt.draw_chart"><code class="docutils literal notranslate"><span class="pre">draw_chart()</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="the_utils.file.html">File</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Save_load</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="the_utils.save_load.html">Save_load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="the_utils.evaluation.html">Unsupervised Graph Learning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="the_utils.common.html">Common</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Bot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="the_utils.bot.html">Bot</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">the_utils</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Plt</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/rst/the_utils.plt.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-the_utils.plt">
+<span id="plt"></span><h1>Plt<a class="headerlink" href="#module-the_utils.plt" title="Permalink to this heading"></a></h1>
+<p>Draw plots.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="the_utils.plt.draw_chart">
+<span class="sig-prename descclassname"><span class="pre">the_utils.plt.</span></span><span class="sig-name descname"><span class="pre">draw_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">ys:</span> <span class="pre">~typing.List[~typing.List],</span> <span class="pre">lbls:</span> <span class="pre">~typing.List[str],</span> <span class="pre">y_colors:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">xs:</span> <span class="pre">~typing.List[~typing.Any]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">fill_between:</span> <span class="pre">~typing.List</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">fill_colors:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">fill_alpha:</span> <span class="pre">~typing.List[float]</span> <span class="pre">=</span> <span class="pre">0.5,</span> <span class="pre">figsize:</span> <span class="pre">~typing.Tuple</span> <span class="pre">=</span> <span class="pre">(24,</span> <span class="pre">3),</span> <span class="pre">xmode:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'s',</span> <span class="pre">ymode:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'s',</span> <span class="pre">title:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">set_xticks:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">xticks:</span> <span class="pre">~typing.List[~typing.Any]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">tick_labels:</span> <span class="pre">~typing.List[~typing.Any]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">x_rotation:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">45,</span> <span class="pre">boxes:</span> <span class="pre">~typing.List[~typing.List[int]]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">box_colors:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">box_alphas:</span> <span class="pre">~typing.List[float]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">ylim:</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">xlim:</span> <span class="pre">(&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'float'&gt;)</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">linewidth:</span> <span class="pre">~typing.List[int]</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">types:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">'line',</span> <span class="pre">markersize:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1.25,</span> <span class="pre">save_path:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">bar_width:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.25,</span> <span class="pre">legend_loc:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'center</span> <span class="pre">left',</span> <span class="pre">legend_bbox_to_anchor:</span> <span class="pre">~typing.Tuple[float]</span> <span class="pre">=</span> <span class="pre">(1,</span> <span class="pre">0.5)</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/the_utils/plt.html#draw_chart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.plt.draw_chart" title="Permalink to this definition"></a></dt>
+<dd><p>Draw charts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ys</strong> (<em>List</em><em>[</em><em>List</em><em>]</em>) – value lists of the y axis.</p></li>
+<li><p><strong>lbls</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – legend labels of the value lists.</p></li>
+<li><p><strong>y_colors</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – colors of the the ys. Defaults to None.</p></li>
+<li><p><strong>xs</strong> (<em>List</em><em>[</em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – value list of the x axis.             If None, idx will be used. Defaults to None.</p></li>
+<li><p><strong>fill_between</strong> (<em>List</em><em>, </em><em>optional</em>) – fill the range of             <cite>[ys[idx][i] - fill_between[idx][i], ys[idx][i] + fill_between[idx][i]]</cite>.                  Defaults to None.</p></li>
+<li><p><strong>fill_colors</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – colors of the fill range. Defaults to None.</p></li>
+<li><p><strong>fill_alpha</strong> (<em>List</em><em>[</em><em>float</em><em>] or </em><em>float</em><em>, </em><em>optional</em>) – color alphas of the fill range.             Defaults to 0.5.</p></li>
+<li><p><strong>figsize</strong> (<em>Tuple</em><em>, </em><em>optional</em>) – size of the output figure. Defaults to (24, 3).</p></li>
+<li><p><strong>xmode</strong> (<em>str</em><em>, </em><em>optional</em>) – all ys with the same x (‘s’) or with different xs (‘d’).             Defaults to “s”.</p></li>
+<li><p><strong>ymode</strong> (<em>str</em><em>, </em><em>optional</em>) – all ys with the same tick (‘s’) or with different ticks (‘d’).             Defaults to “s”.</p></li>
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – figure title. Defaults to None.</p></li>
+<li><p><strong>set_xticks</strong> (<em>bool</em><em>, </em><em>optional</em>) – set the x ticks. Defaults to True.</p></li>
+<li><p><strong>xticks</strong> (<em>List</em><em>[</em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – ticks for the x axis. Defaults to None.</p></li>
+<li><p><strong>tick_labels</strong> (<em>List</em><em>[</em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – tick labels for the x axis. Defaults to None.</p></li>
+<li><p><strong>x_rotation</strong> (<em>float</em><em>, </em><em>optional</em>) – rotation of the x ticks. Defaults to 45.</p></li>
+<li><p><strong>boxes</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>int</em><em>]</em><em>]</em><em>, </em><em>optional</em>) – draw boxes. Defaults to None.</p></li>
+<li><p><strong>box_colors</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – colors of the boxes to draw. Defaults to None.</p></li>
+<li><p><strong>box_alpha</strong> (<em>List</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – color alphas of the boxes to draw. Defaults to 0.5.</p></li>
+<li><p><strong>ylim</strong> (<em>float</em><em>, </em><em>optional</em>) – maximum value of the y axis. Defaults to None.</p></li>
+<li><p><strong>xlim</strong> (<em>float</em><em>, </em><em>optional</em>) – maximum value of the x axis. Defaults to None.</p></li>
+<li><p><strong>linewidth</strong> (<em>List</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – line width of the line charts to draw. Defaults to None.</p></li>
+<li><p><strong>types</strong> (<em>List</em><em>[</em><em>str</em><em>] or </em><em>str</em><em>, </em><em>optional</em>) – types of charts of the ys. Defaults to “line”.</p></li>
+<li><p><strong>markersize</strong> (<em>float</em><em>, </em><em>optional</em>) – dot size of the scatter charts. Defaults to 1.25.</p></li>
+<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – If not None, save image to the path. Defaults to None.</p></li>
+<li><p><strong>bar_width</strong> (<em>float</em><em>, </em><em>optional</em>) – width of the bars. Defaults to 0.25.</p></li>
+<li><p><strong>legend_loc</strong> (<em>str</em><em>, </em><em>optional</em>) – location of the legend. Defaults to “center left”.</p></li>
+<li><p><strong>legend_bbox_to_anchor</strong> (<em>Tuple</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – bbox_to_anchor of the legend.             Defaults to (1, 0.5).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – “The arg ‘types:’{types} has values not supported.”</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="the_utils.setting.html" class="btn btn-neutral float-left" title="Setting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="the_utils.file.html" class="btn btn-neutral float-right" title="File" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, galo.gm.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

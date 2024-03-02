@@ -46,15 +46,33 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Setting</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.html">Setting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.html#module-the_utils.plt">Plt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.html#module-the_utils.file">File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.html#module-the_utils.save_load">Save_load</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.html#module-the_utils.evaluation.unsupervised_graph_learning">Evaluation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.html#module-the_utils.common">Common</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.html#module-the_utils.bot">Bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.setting.html">Setting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Plt</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.plt.html">Plt</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.file.html">File</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Save_load</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.save_load.html">Save_load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.evaluation.html">Unsupervised Graph Learning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.common.html">Common</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Bot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../rst/the_utils.bot.html">Bot</a></li>
 </ul>
 
         </div>
@@ -89,6 +107,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -142,10 +161,13 @@
                 <span class="c1"># set up train val and test</span>
                 <span class="n">shuffle</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">))</span>
                 <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">shuffle</span><span class="p">)</span>
-                <span class="n">train_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[:</span><span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="n">train_ratio</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)]</span>
-                <span class="n">val_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="n">train_ratio</span> <span class="o">/</span>
-                                        <span class="mi">100</span><span class="p">):</span><span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="p">(</span><span class="n">train_ratio</span> <span class="o">+</span> <span class="n">valid_ratio</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)]</span>
-                <span class="n">test_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="p">(</span><span class="n">train_ratio</span> <span class="o">+</span> <span class="n">valid_ratio</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">):]</span>
+                <span class="n">train_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[:</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="n">train_ratio</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)]</span>
+                <span class="n">val_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[</span>
+                    <span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="n">train_ratio</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span>
+                        <span class="n">num_nodes</span> <span class="o">*</span> <span class="p">(</span><span class="n">train_ratio</span> <span class="o">+</span> <span class="n">valid_ratio</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+                    <span class="p">)</span>
+                <span class="p">]</span>
+                <span class="n">test_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="p">(</span><span class="n">train_ratio</span> <span class="o">+</span> <span class="n">valid_ratio</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="p">:]</span>
                 <span class="n">splits</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">train_nodes</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">:</span> <span class="n">val_nodes</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="n">test_nodes</span><span class="p">}</span>
             <span class="n">save_dict</span><span class="p">(</span><span class="n">di_</span><span class="o">=</span><span class="n">splits</span><span class="p">,</span> <span class="n">filename_</span><span class="o">=</span><span class="n">file_path</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -156,10 +178,11 @@
         <span class="c1"># set up train val and test</span>
         <span class="n">shuffle</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">))</span>
         <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">shuffle</span><span class="p">)</span>
-        <span class="n">train_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[:</span><span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="n">train_ratio</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)]</span>
-        <span class="n">val_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="n">train_ratio</span> <span class="o">/</span>
-                                <span class="mi">100</span><span class="p">):</span><span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="p">(</span><span class="n">train_ratio</span> <span class="o">+</span> <span class="n">valid_ratio</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)]</span>
-        <span class="n">test_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="p">(</span><span class="n">train_ratio</span> <span class="o">+</span> <span class="n">valid_ratio</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">):]</span>
+        <span class="n">train_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[:</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="n">train_ratio</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)]</span>
+        <span class="n">val_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[</span>
+            <span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="n">train_ratio</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="p">(</span><span class="n">train_ratio</span> <span class="o">+</span> <span class="n">valid_ratio</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="n">test_nodes</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="p">(</span><span class="n">train_ratio</span> <span class="o">+</span> <span class="n">valid_ratio</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="p">:]</span>
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">train_nodes</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">val_nodes</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_nodes</span><span class="p">)</span></div>
 
@@ -296,7 +319,7 @@
     <span class="n">embeddings</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;both&quot;</span><span class="p">,</span>
-<span class="p">):</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluation of node classification (linear regression) and clustering.</span>
 
 <span class="sd">    Args:</span>
@@ -311,7 +334,8 @@
 <span class="sd">                &quot;cls&quot; for node clustering, &quot;both&quot; for both. Defaults to &quot;both&quot;.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        _type_: _description_</span>
+<span class="sd">        Tuple[List[Tuple[float]], float]: [svm_macro_f1_list, svm_micro_f1_list, \</span>
+<span class="sd">            acc_mean, acc_std, nmi_mean, nmi_std, ami_mean, ami_std, ari_mean,ari_std, f1_mean, f1_std]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">acc_mean</span> <span class="o">=</span> <span class="n">acc_std</span> <span class="o">=</span> <span class="n">nmi_mean</span> <span class="o">=</span> <span class="n">nmi_std</span> <span class="o">=</span> <span class="n">ari_mean</span> <span class="o">=</span> <span class="n">ari_std</span> <span class="o">=</span> <span class="n">f1_mean</span> <span class="o">=</span> <span class="n">f1_std</span> <span class="o">=</span> <span class="mi">0</span>
@@ -330,13 +354,15 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">quiet</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SVM test for linear regression:&quot;</span><span class="p">)</span>
             <span class="n">maf1</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">macro_f1_mean</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">macro_f1_std</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">train_size</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">macro_f1_mean</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">macro_f1_std</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">train_size</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="k">for</span> <span class="p">(</span>
                     <span class="n">macro_f1_mean</span><span class="p">,</span>
                     <span class="n">macro_f1_std</span><span class="p">,</span>
                 <span class="p">),</span> <span class="n">train_size</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">svm_macro_f1_list</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
             <span class="p">]</span>
             <span class="n">mif1</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">micro_f1_mean</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">micro_f1_std</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">train_size</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">micro_f1_mean</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">±</span><span class="si">{</span><span class="n">micro_f1_std</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">train_size</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="k">for</span> <span class="p">(</span>
                     <span class="n">micro_f1_mean</span><span class="p">,</span>
                     <span class="n">micro_f1_std</span><span class="p">,</span>
                 <span class="p">),</span> <span class="n">train_size</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">svm_micro_f1_list</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>

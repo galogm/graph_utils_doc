@@ -47,15 +47,33 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Utils</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Setting</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.html">Setting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.html#module-the_utils.plt">Plt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.html#module-the_utils.file">File</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.html#module-the_utils.save_load">Save_load</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.html#module-the_utils.evaluation.unsupervised_graph_learning">Evaluation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.html#module-the_utils.common">Common</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.html#module-the_utils.bot">Bot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.setting.html">Setting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Plt</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.plt.html">Plt</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.file.html">File</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Save_load</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.save_load.html">Save_load</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Evaluation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.evaluation.html">Unsupervised Graph Learning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.common.html">Common</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Bot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/the_utils.bot.html">Bot</a></li>
 </ul>
 
         </div>
@@ -413,7 +431,20 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="the_utils.save_load.save_embedding">
 <span class="sig-prename descclassname"><span class="pre">the_utils.save_load.</span></span><span class="sig-name descname"><span class="pre">save_embedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_embeddings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./save'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/save_load.html#save_embedding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.save_load.save_embedding" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Save embeddings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_embeddings</strong> (<em>torch.tensor</em>) – node embeddings.</p></li>
+<li><p><strong>dataset_name</strong> (<em>str</em>) – dataset name.</p></li>
+<li><p><strong>model_name</strong> (<em>str</em>) – model name.</p></li>
+<li><p><strong>params</strong> (<em>dict</em>) – parameter dict.</p></li>
+<li><p><strong>save_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – save dir. Defaults to “./save”.</p></li>
+<li><p><strong>verbose</strong> (<em>Union</em><em>[</em><em>bool</em><em>, </em><em>int</em><em>]</em><em>, </em><em>optional</em>) – whether to print debug info. Defaults to True.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="module-the_utils.setting">
