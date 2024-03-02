@@ -1,0 +1,21 @@
+the\_utils.evaluation package
+=============================
+
+Submodules
+----------
+
+the\_utils.evaluation.unsupervised\_graph\_learning module
+----------------------------------------------------------
+
+.. automodule:: the_utils.evaluation.unsupervised_graph_learning
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: the_utils.evaluation
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>the_utils package &mdash; the_utils 0.0.1 documentation</title>
+  <title>the_utils package &mdash; the_utils 0.1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
@@ -18,7 +18,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=f6245a2f"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=2389946f"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -84,6 +84,29 @@
              
   <section id="the-utils-package">
 <h1>the_utils package<a class="headerlink" href="#the-utils-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="the_utils.evaluation.html">the_utils.evaluation package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="the_utils.evaluation.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the_utils.evaluation.html#module-the_utils.evaluation.unsupervised_graph_learning">the_utils.evaluation.unsupervised_graph_learning module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="the_utils.evaluation.html#the_utils.evaluation.unsupervised_graph_learning.load_dict"><code class="docutils literal notranslate"><span class="pre">load_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="the_utils.evaluation.html#the_utils.evaluation.unsupervised_graph_learning.save_dict"><code class="docutils literal notranslate"><span class="pre">save_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="the_utils.evaluation.html#the_utils.evaluation.unsupervised_graph_learning.split_train_test_nodes"><code class="docutils literal notranslate"><span class="pre">split_train_test_nodes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="the_utils.evaluation.html#the_utils.evaluation.unsupervised_graph_learning.cluster_eval"><code class="docutils literal notranslate"><span class="pre">cluster_eval()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="the_utils.evaluation.html#the_utils.evaluation.unsupervised_graph_learning.kmeans_test"><code class="docutils literal notranslate"><span class="pre">kmeans_test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="the_utils.evaluation.html#the_utils.evaluation.unsupervised_graph_learning.svm_test"><code class="docutils literal notranslate"><span class="pre">svm_test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="the_utils.evaluation.html#the_utils.evaluation.unsupervised_graph_learning.evaluate_clf_cls"><code class="docutils literal notranslate"><span class="pre">evaluate_clf_cls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="the_utils.evaluation.html#the_utils.evaluation.unsupervised_graph_learning.evaluate_from_embeddings"><code class="docutils literal notranslate"><span class="pre">evaluate_from_embeddings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="the_utils.evaluation.html#module-the_utils.evaluation">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
@@ -170,125 +193,6 @@
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
-</dd></dl>
-
-</section>
-<section id="module-the_utils.eval_tools">
-<span id="the-utils-eval-tools-module"></span><h2>the_utils.eval_tools module<a class="headerlink" href="#module-the_utils.eval_tools" title="Permalink to this heading"></a></h2>
-<p>Utils for evaluation.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.eval_tools.load_dict">
-<span class="sig-prename descclassname"><span class="pre">the_utils.eval_tools.</span></span><span class="sig-name descname"><span class="pre">load_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/eval_tools.html#load_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.eval_tools.load_dict" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.eval_tools.save_dict">
-<span class="sig-prename descclassname"><span class="pre">the_utils.eval_tools.</span></span><span class="sig-name descname"><span class="pre">save_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">di_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/eval_tools.html#save_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.eval_tools.save_dict" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.eval_tools.split_train_test_nodes">
-<span class="sig-prename descclassname"><span class="pre">the_utils.eval_tools.</span></span><span class="sig-name descname"><span class="pre">split_train_test_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/eval_tools.html#split_train_test_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.eval_tools.split_train_test_nodes" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.eval_tools.cluster_eval">
-<span class="sig-prename descclassname"><span class="pre">the_utils.eval_tools.</span></span><span class="sig-name descname"><span class="pre">cluster_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/eval_tools.html#cluster_eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.eval_tools.cluster_eval" title="Permalink to this definition"></a></dt>
-<dd><p>code source: <a class="reference external" href="https://github.com/bdy9527/SDCN">https://github.com/bdy9527/SDCN</a></p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.eval_tools.unsup_eval">
-<span class="sig-prename descclassname"><span class="pre">the_utils.eval_tools.</span></span><span class="sig-name descname"><span class="pre">unsup_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/eval_tools.html#unsup_eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.eval_tools.unsup_eval" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.eval_tools.kmeans_test">
-<span class="sig-prename descclassname"><span class="pre">the_utils.eval_tools.</span></span><span class="sig-name descname"><span class="pre">kmeans_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/eval_tools.html#kmeans_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.eval_tools.kmeans_test" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.eval_tools.svm_test">
-<span class="sig-prename descclassname"><span class="pre">the_utils.eval_tools.</span></span><span class="sig-name descname"><span class="pre">svm_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_ratios</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(10,</span> <span class="pre">20,</span> <span class="pre">30,</span> <span class="pre">40)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/eval_tools.html#svm_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.eval_tools.svm_test" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.eval_tools.evaluate_results_nc">
-<span class="sig-prename descclassname"><span class="pre">the_utils.eval_tools.</span></span><span class="sig-name descname"><span class="pre">evaluate_results_nc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unsup'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/eval_tools.html#evaluate_results_nc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.eval_tools.evaluate_results_nc" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.eval_tools.save_embedding">
-<span class="sig-prename descclassname"><span class="pre">the_utils.eval_tools.</span></span><span class="sig-name descname"><span class="pre">save_embedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_embeddings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./save'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/eval_tools.html#save_embedding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.eval_tools.save_embedding" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</section>
-<section id="module-the_utils.evaluation">
-<span id="the-utils-evaluation-module"></span><h2>the_utils.evaluation module<a class="headerlink" href="#module-the_utils.evaluation" title="Permalink to this heading"></a></h2>
-<p>Evaluation utils for graph tasks.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.evaluation.load_from_file">
-<span class="sig-prename descclassname"><span class="pre">the_utils.evaluation.</span></span><span class="sig-name descname"><span class="pre">load_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/evaluation.html#load_from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.evaluation.load_from_file" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.evaluation.evaluate_from_embeddings">
-<span class="sig-prename descclassname"><span class="pre">the_utils.evaluation.</span></span><span class="sig-name descname"><span class="pre">evaluate_from_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embeddings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'both'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/the_utils/evaluation.html#evaluate_from_embeddings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.evaluation.evaluate_from_embeddings" title="Permalink to this definition"></a></dt>
-<dd><p>evaluate embeddings with LR and Clustering.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>labels</strong> (<em>np.ndarray</em>) – labels.</p></li>
-<li><p><strong>num_classes</strong> (<em>int</em>) – number of classes.</p></li>
-<li><p><strong>num_nodes</strong> (<em>int</em>) – number of nodes.</p></li>
-<li><p><strong>data_name</strong> (<em>str</em>) – name of the datasets.</p></li>
-<li><p><strong>embeddings</strong> (<em>torch.Tensor</em>) – embeddings.</p></li>
-<li><p><strong>quiet</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to print info. Defaults to True.</p></li>
-<li><p><strong>method</strong> (<em>bool</em><em>, </em><em>optional</em>) – method for evaluation,             “sup” for linear regression, “unsup” for svm clustering, “both” for both.            Defaults to “both”.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>(clustering_results, classification_results)</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Tuple[Dict, Dict]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="the_utils.evaluation.evaluate_from_embed_file">
-<span class="sig-prename descclassname"><span class="pre">the_utils.evaluation.</span></span><span class="sig-name descname"><span class="pre">evaluate_from_embed_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./tmp/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/the_utils/evaluation.html#evaluate_from_embed_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.evaluation.evaluate_from_embed_file" title="Permalink to this definition"></a></dt>
-<dd><p>Evaluation of representation quality using clustering and classification tasks.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>embedding_file</strong> (<em>str</em>) – Embedded file name.</p></li>
-<li><p><strong>data_file</strong> (<em>str</em>) – Data file name.</p></li>
-<li><p><strong>save_path</strong> (<em>str</em><em>, </em><em>optional</em>) – Folder path to store. Defaults to ‘./tmp/’.</p></li>
-<li><p><strong>quiet</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print results. Defaults to True.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Two dicts are included,             which are the evaluation results of clustering and classification.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Tuple[Dict, Dict]</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">the_utils</span> <span class="kn">import</span> <span class="n">evaluate_from_embed_file</span>
-
-<span class="n">method_name</span><span class="o">=</span><span class="s1">&#39;orderedgnn&#39;</span>
-<span class="n">data_name</span><span class="o">=</span><span class="s1">&#39;texas&#39;</span>
-
-<span class="n">clustering_res</span><span class="p">,</span> <span class="n">classification_res</span> <span class="o">=</span> <span class="n">evaluate_from_embed_file</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">method_name</span><span class="si">}</span><span class="s1">_embeds.pth&#39;</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_name</span><span class="si">}</span><span class="s1">_data.pth&#39;</span><span class="p">,</span>
-    <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;./save/&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
 </dd></dl>
 
 </section>
@@ -409,7 +313,7 @@
 <p>Draw plots.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="the_utils.plt.charts">
-<span class="sig-prename descclassname"><span class="pre">the_utils.plt.</span></span><span class="sig-name descname"><span class="pre">charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax:</span> <span class="pre">&lt;module</span> <span class="pre">'matplotlib.axes'</span> <span class="pre">from</span> <span class="pre">'/graph/guming/projects/the_utils/.env/lib/python3.8/site-packages/matplotlib/axes/__init__.py'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/plt.html#charts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.plt.charts" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">the_utils.plt.</span></span><span class="sig-name descname"><span class="pre">charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax:</span> <span class="pre">&lt;module</span> <span class="pre">'matplotlib.axes'</span> <span class="pre">from</span> <span class="pre">'/graph/guming/projects/HeterGNN/.env/lib/python3.8/site-packages/matplotlib/axes/__init__.py'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/plt.html#charts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.plt.charts" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -505,6 +409,11 @@
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="the_utils.save_load.save_embedding">
+<span class="sig-prename descclassname"><span class="pre">the_utils.save_load.</span></span><span class="sig-name descname"><span class="pre">save_embedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_embeddings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'./save'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/the_utils/save_load.html#save_embedding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#the_utils.save_load.save_embedding" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </section>
 <section id="module-the_utils.setting">

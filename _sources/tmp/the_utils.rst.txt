@@ -1,6 +1,14 @@
 the\_utils package
 ==================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   the_utils.evaluation
+
 Submodules
 ----------
 
@@ -16,22 +24,6 @@ the\_utils.common module
 ------------------------
 
 .. automodule:: the_utils.common
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-the\_utils.eval\_tools module
------------------------------
-
-.. automodule:: the_utils.eval_tools
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-the\_utils.evaluation module
-----------------------------
-
-.. automodule:: the_utils.evaluation
    :members:
    :undoc-members:
    :show-inheritance:
