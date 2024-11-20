@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>the_utils.file &mdash; the_utils 0.3.2 documentation</title>
+  <title>the_utils.file &mdash; the_utils 0.7.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
@@ -17,7 +17,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=53a30eae"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=dc072ff8"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -109,6 +109,175 @@
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">PurePath</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<div class="viewcode-block" id="dataframe_to_latex_3line"><a class="viewcode-back" href="../../tmp/the_utils.html#the_utils.file.dataframe_to_latex_3line">[docs]</a><span class="k">def</span> <span class="nf">dataframe_to_latex_3line</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">caption</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a DataFrame to a LaTeX 3-line tabular format with bolded \</span>
+<span class="sd">        model names and second-largest values underlined.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (pd.DataFrame): pd.DataFrame table.</span>
+<span class="sd">        file_path (str): Path to save the latex table.</span>
+<span class="sd">        caption (str, optional): Table caption. Defaults to None.</span>
+<span class="sd">        label (str, optional): Table label. Defaults to None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="c1"># Write table preamble</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">begin{table*}[t]</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">centering</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">renewcommand{</span><span class="se">\\</span><span class="s2">arraystretch}</span><span class="si">{1.2}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">resizebox{</span><span class="se">\\</span><span class="s2">textwidth}{!}{</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">caption</span><span class="p">:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">caption</span><span class="se">{{</span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="se">}}\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">begin</span><span class="si">{tabular}</span><span class="s2">{c|&quot;</span> <span class="o">+</span> <span class="s2">&quot;r&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">toprule[1pt]</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Write header</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+            <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">textbf</span><span class="si">{model}</span><span class="s2"> &amp; &quot;</span> <span class="o">+</span> <span class="s2">&quot; &amp; &quot;</span><span class="o">.</span>
+            <span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">textbf</span><span class="se">{{</span><span class="si">{</span><span class="n">col</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">col</span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;Avg. Rank&#39;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;A.R.&#39;</span><span class="si">}</span><span class="se">}}</span><span class="s2">&quot;</span>
+                  <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span> <span class="o">+</span> <span class="s2">&quot; </span><span class="se">\\\\\n</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">midrule[0.8pt]</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">row_data</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">val</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">textbf</span><span class="se">{{</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="se">}}</span><span class="s2">&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;**&quot;</span><span class="p">):</span>
+                        <span class="n">val</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">textbf</span><span class="se">{{</span><span class="si">{</span><span class="n">val</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="se">}}</span><span class="s2">&quot;</span>
+                    <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+                        <span class="n">val</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">underline</span><span class="se">{{</span><span class="si">{</span><span class="n">val</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="se">}}</span><span class="s2">&quot;</span>
+
+                <span class="n">row_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row_data</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; </span><span class="se">\\\\\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">bottomrule[1pt]</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">end</span><span class="si">{tabular}</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">label</span><span class="p">:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">label</span><span class="se">{{</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="se">}}\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">end{table*}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="csv_to_table"><a class="viewcode-back" href="../../tmp/the_utils.html#the_utils.file.csv_to_table">[docs]</a><span class="k">def</span> <span class="nf">csv_to_table</span><span class="p">(</span>
+    <span class="n">raw_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">row_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">col_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">val_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">fillna</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">row_order</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">col_order</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">average_rank</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">bold_max</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">save_latex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">caption</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Comparison of Models Across Datasets&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;tab:model_comparison&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transfer a csv into table.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        raw_path (str): raw csv path.</span>
+<span class="sd">        save_path (str): path to save the table.</span>
+<span class="sd">        row_key (str): key for row index.</span>
+<span class="sd">        col_key (str): key for column index.</span>
+<span class="sd">        val_key (str): key for value index.</span>
+<span class="sd">        fillna (Union[float, str], optional): fill empty cell with the value given. \</span>
+<span class="sd">            Defaults to None.</span>
+<span class="sd">        row_order (List[str], optional): sort the rows with given order list. Defaults to None.</span>
+<span class="sd">        col_order (List[str], optional): sort the columns with given order list. Defaults to None.</span>
+<span class="sd">        average_rank (bool, optional): whether to add a column with average ranks. Defaults to True.</span>
+<span class="sd">        bold_max (bool, optional): whether to wrap the maximum value of each column \</span>
+<span class="sd">            with `**value**`. Defaults to True.</span>
+<span class="sd">        save_latex (bool, optional): whether to save the latex table version. Defaults to True.</span>
+<span class="sd">        caption (str, optional): Table caption. Defaults to &quot;Comparison of Models Across Datasets&quot;.</span>
+<span class="sd">        label (str, optional): Table label. Defaults to &quot;tab:model_comparison&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: table.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pivot_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">raw_path</span><span class="p">)</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
+        <span class="n">index</span><span class="o">=</span><span class="n">row_key</span><span class="p">,</span>
+        <span class="n">columns</span><span class="o">=</span><span class="n">col_key</span><span class="p">,</span>
+        <span class="n">values</span><span class="o">=</span><span class="n">val_key</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">fillna</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pivot_df</span> <span class="o">=</span> <span class="n">pivot_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">fillna</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">row_order</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pivot_df</span> <span class="o">=</span> <span class="n">pivot_df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">row_order</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">col_order</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pivot_df</span> <span class="o">=</span> <span class="n">pivot_df</span><span class="p">[</span><span class="n">col_order</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">average_rank</span><span class="p">:</span>
+        <span class="n">AR</span> <span class="o">=</span> <span class="s2">&quot;Avg. Rank&quot;</span>
+        <span class="n">ranks_df</span> <span class="o">=</span> <span class="n">pivot_df</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;±&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">,</span>
+        <span class="p">))</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;min&quot;</span><span class="p">,</span>
+            <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">pivot_df</span><span class="p">[</span><span class="n">AR</span><span class="p">]</span> <span class="o">=</span> <span class="n">ranks_df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">bold_max</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">pivot_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="c1"># Parse numeric values for comparison</span>
+            <span class="n">numeric_values</span> <span class="o">=</span> <span class="n">pivot_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">maxsplit</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">sorted_vals</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">numeric_values</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">numeric_values</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="n">chosen_1</span><span class="p">,</span> <span class="n">chosen_2</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="p">(</span><span class="n">sorted_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sorted_vals</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">average_rank</span> <span class="ow">and</span> <span class="n">col</span> <span class="o">==</span> <span class="n">AR</span> <span class="k">else</span>
+                    <span class="p">(</span><span class="n">sorted_vals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sorted_vals</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+                <span class="p">)</span>
+                <span class="n">pivot_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pivot_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;**</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">**&quot;</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+                            <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">maxsplit</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+                            <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">,</span>
+                        <span class="p">)</span>
+                        <span class="c1"># pylint: disable=cell-var-from-loop</span>
+                        <span class="o">==</span> <span class="n">chosen_1</span> <span class="k">else</span> <span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">_&quot;</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+                                <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">maxsplit</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+                                <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">,</span>
+                            <span class="p">)</span>
+                            <span class="c1"># pylint: disable=cell-var-from-loop</span>
+                            <span class="o">==</span> <span class="n">chosen_2</span> <span class="k">else</span> <span class="n">x</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+    <span class="n">pivot_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">save_latex</span><span class="p">:</span>
+        <span class="n">dataframe_to_latex_3line</span><span class="p">(</span>
+            <span class="n">pivot_df</span><span class="p">,</span>
+            <span class="n">file_path</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">save_path</span><span class="si">}</span><span class="s2">.tex&quot;</span><span class="p">,</span>
+            <span class="n">caption</span><span class="o">=</span><span class="n">caption</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pivot_df</span></div>
 
 
 <div class="viewcode-block" id="make_parent_dirs"><a class="viewcode-back" href="../../tmp/the_utils.html#the_utils.file.make_parent_dirs">[docs]</a><span class="k">def</span> <span class="nf">make_parent_dirs</span><span class="p">(</span><span class="n">target_path</span><span class="p">:</span> <span class="n">PurePath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -207,6 +376,10 @@
                     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span><span class="o">.</span><span class="n">st_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                         <span class="n">csv_write</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
                     <span class="n">tbody</span> <span class="o">=</span> <span class="p">[{</span><span class="n">k</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">}</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">tbody</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span><span class="o">.</span><span class="n">st_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tbody</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                        <span class="n">csv_write</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
 
                 <span class="n">dict_writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span>
                     <span class="n">csvfile</span><span class="p">,</span>
@@ -227,8 +400,9 @@
 
 <div class="viewcode-block" id="save_to_csv_files"><a class="viewcode-back" href="../../tmp/the_utils.html#the_utils.file.save_to_csv_files">[docs]</a><span class="k">def</span> <span class="nf">save_to_csv_files</span><span class="p">(</span>
     <span class="n">results</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-    <span class="n">add_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
     <span class="n">csv_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">insert_info</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">append_info</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;./results&quot;</span><span class="p">,</span>
     <span class="n">sort_head</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -236,8 +410,9 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        results (dict): Evaluation results document.</span>
-<span class="sd">        add_info (dict): Additional information, such as data set name, method name.</span>
 <span class="sd">        csv_name (str): csv file name to store.</span>
+<span class="sd">        insert_info (dict): Insert information in front of the results. Defaults to None.</span>
+<span class="sd">        append_info (dict): Append information after the results. Defaults to None.</span>
 <span class="sd">        save_path (str, optional): Folder path to store. Defaults to &#39;./results&#39;.</span>
 <span class="sd">        sort_head (bool, optional): whether to sort the head before writing. Defaults to False.</span>
 
@@ -256,12 +431,16 @@
 <span class="sd">                save_path=&#39;./save/&#39;,</span>
 <span class="sd">            )</span>
 
-<span class="sd">            add_info = {&#39;data&#39;: data_name, &#39;method&#39;: method_name,}</span>
-<span class="sd">            save_to_csv_files(clustering_res, add_info, &#39;clutering.csv&#39;)</span>
-<span class="sd">            save_to_csv_files(classification_res, add_info, &#39;classification.csv&#39;)</span>
+<span class="sd">            insert_info = {&#39;data&#39;: data_name, &#39;method&#39;: method_name,}</span>
+<span class="sd">            save_to_csv_files(clustering_res, insert_info, &#39;clutering.csv&#39;)</span>
+<span class="sd">            save_to_csv_files(classification_res, insert_info, &#39;classification.csv&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># save to csv file</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">add_info</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="o">**</span><span class="p">(</span><span class="n">insert_info</span> <span class="ow">or</span> <span class="p">{}),</span>
+        <span class="o">**</span><span class="n">results</span><span class="p">,</span>
+        <span class="o">**</span><span class="p">(</span><span class="n">append_info</span> <span class="ow">or</span> <span class="p">{}),</span>
+    <span class="p">}</span>
 
     <span class="c1"># list of values</span>
     <span class="n">csv2file</span><span class="p">(</span>

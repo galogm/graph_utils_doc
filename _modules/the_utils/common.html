@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>the_utils.common &mdash; the_utils 0.3.2 documentation</title>
+  <title>the_utils.common &mdash; the_utils 0.7.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
@@ -17,7 +17,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=53a30eae"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=dc072ff8"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -162,6 +162,14 @@
     <span class="k">return</span> <span class="n">pytz_now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">-%H:%M:%S&quot;</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="is_float"><a class="viewcode-back" href="../../tmp/the_utils.html#the_utils.common.is_float">[docs]</a><span class="k">def</span> <span class="nf">is_float</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">_</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
 <div class="viewcode-block" id="format_value"><a class="viewcode-back" href="../../tmp/the_utils.html#the_utils.common.format_value">[docs]</a><span class="k">def</span> <span class="nf">format_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return number as string with comma split.</span>
 
@@ -171,8 +179,8 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        str: string of the number with comma split.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">isdecimal</span><span class="p">():</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">is_float</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="k">return</span> <span class="n">value</span></div>
 
 
